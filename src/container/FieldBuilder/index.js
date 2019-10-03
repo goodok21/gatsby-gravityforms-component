@@ -18,6 +18,8 @@ import Checkbox from '../../components/Checkbox'
 import Radio from '../../components/Radio'
 import Html from '../../components/Html'
 
+import Recaptcha from 'react-recaptcha'
+
 const FieldBuilder = ({
     formId,
     formData,
@@ -49,12 +51,11 @@ const FieldBuilder = ({
             case 'captcha':
                 return (
                     <p>
-                        <strong>
-                            Gatsby Gravity Form Component currently does not
-                            support the CAPTCHA field. Form will not submit with
-                            this field present. Remove this field from the
-                            Gravity Form.
-                        </strong>
+                        <Recaptcha
+                            sitekey={process.env.GATSBY_GF_CAPTCHA_KEY || ''}
+                            render="explicit"
+                            // onloadCallback={callback}
+                        />
                     </p>
                 )
             // Start with the standard fields
