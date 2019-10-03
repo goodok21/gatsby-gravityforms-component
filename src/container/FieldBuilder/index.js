@@ -50,13 +50,11 @@ const FieldBuilder = ({
             // Add note for unsupported captcha field
             case 'captcha':
                 return (
-                    <p>
-                        <Recaptcha
-                            sitekey={process.env.GATSBY_GF_CAPTCHA_KEY || ''}
-                            render="explicit"
-                            // onloadCallback={callback}
-                        />
-                    </p>
+                    <Recaptcha
+                        sitekey={process.env.GATSBY_GF_CAPTCHA_KEY || ''}
+                        render="explicit"
+                        onloadCallback={() => {}}
+                    />
                 )
             // Start with the standard fields
             case 'text':
