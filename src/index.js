@@ -22,7 +22,14 @@ import passToGravityForms from './utils/passToGravityForms'
  *                              netlify or similar
  */
 
-const GravityFormForm = ({ id, formData, lambda, presetValues = {} }) => {
+const GravityFormForm = ({
+    id,
+    formData,
+    lambda,
+    presetValues = {},
+    reCaptchaKey,
+    reCaptchaLoaded,
+}) => {
     // Pull in form functions
     const { register, errors, handleSubmit, setError } = useForm()
 
@@ -104,6 +111,8 @@ const GravityFormForm = ({ id, formData, lambda, presetValues = {} }) => {
                         formId={id}
                         formData={singleForm}
                         presetValues={presetValues}
+                        reCaptchaKey={reCaptchaKey}
+                        reCaptchaLoaded={reCaptchaLoaded}
                         register={register}
                         errors={errors}
                     />
@@ -132,6 +141,8 @@ GravityFormForm.defaultProps = {
 }
 
 GravityFormForm.propTypes = {
+    reCaptchaKey: PropTypes.string.isRequired,
+    reCaptchaLoaded: PropTypes.func.isRequired,
     formData: PropTypes.object.isRequired,
     id: PropTypes.number.isRequired,
     lambda: PropTypes.string,

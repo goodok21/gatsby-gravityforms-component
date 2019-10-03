@@ -24,6 +24,8 @@ const FieldBuilder = ({
     formId,
     formData,
     presetValues = {},
+    reCaptchaKey = '',
+    reCaptchaLoaded,
     register,
     errors,
 }) => {
@@ -51,9 +53,10 @@ const FieldBuilder = ({
             case 'captcha':
                 return (
                     <Recaptcha
-                        sitekey={process.env.GATSBY_GF_CAPTCHA_KEY || ''}
+                        key={field.id}
+                        sitekey={reCaptchaKey}
                         render="explicit"
-                        onloadCallback={() => {}}
+                        onloadCallback={reCaptchaLoaded || null}
                     />
                 )
             // Start with the standard fields

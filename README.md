@@ -80,6 +80,8 @@ const examplePage = () => (
         id={1}
         formData={allGravityData()}
         presetValues={{ input_1: 'special_value' }}
+        reCaptchaKey={reCaptchaKey}
+        reCaptchaLoaded={reCaptchaLoaded}
         lambda={process.env.LAMBDA_ENDPOINT}
     />
 )
