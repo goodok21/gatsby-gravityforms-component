@@ -26,7 +26,7 @@ const Textarea = props => {
                 props.descriptionPlacement,
                 'above'
             )}
-            {children}
+            {props.children}
             {/* <textarea
                 id={props.name}
                 type={props.type}
