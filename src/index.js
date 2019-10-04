@@ -45,12 +45,10 @@ const GravityFormForm = ({
 
     const [verifyKey, setVerifyKey] = useState('')
     const handleVerifyCallback = response => {
-        console.log(response)
         setVerifyKey(response)
     }
 
     const onSubmitCallback = async values => {
-        console.log(values)
         // Make sure we are not already waiting for a response
         if (!formLoading) {
             setLoadingState(true)
