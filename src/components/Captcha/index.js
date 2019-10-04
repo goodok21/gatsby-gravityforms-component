@@ -3,6 +3,7 @@ import classnames from 'classnames'
 import { outputDescription } from '../../utils/inputSettings'
 import strings from '../../utils/strings'
 
+
 const Textarea = props => {
     const regex = props.inputMaskValue
         ? new RegExp(props.inputMaskValue)
@@ -26,12 +27,7 @@ const Textarea = props => {
                 'above'
             )}
             {children}
-            <textarea
-                // id="g-recaptcha-response"
-                // name="g-recaptcha-response"
-                // class="g-recaptcha-response"
-                // style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"
-
+            {/* <textarea
                 id={props.name}
                 type={props.type}
                 className={classnames(
@@ -49,14 +45,16 @@ const Textarea = props => {
                         value: props.maxLength > 0 && props.maxLength,
                         message:
                             props.maxLength > 0 &&
-                            `${strings.errors.maxChar.front}  ${props.maxLength} ${strings.errors.maxChar.back}`,
+                            `${strings.errors.maxChar.front}  ${
+                                props.maxLength
+                            } ${strings.errors.maxChar.back}`,
                     },
                     pattern: {
                         value: regex,
                         message: regex && strings.errors.pattern,
                     },
                 })}
-            />
+            /> */}
             {outputDescription(
                 props.description,
                 props.descriptionPlacement,

@@ -43,6 +43,7 @@ const GravityFormForm = ({
     const singleForm = getForm(formData, id)
 
     const onSubmitCallback = async values => {
+        console.log(values)
         // Make sure we are not already waiting for a response
         if (!formLoading) {
             setLoadingState(true)
