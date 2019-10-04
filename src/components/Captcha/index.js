@@ -29,7 +29,7 @@ const Textarea = props => {
             )}
             {/* {props.children} */}
             <Recaptcha
-                key={field.id}
+                key={props.name}
                 sitekey={reCaptchaKey}
                 render="explicit"
                 onloadCallback={reCaptchaLoaded || null}
