@@ -80,7 +80,7 @@ const FieldBuilder = ({
                         maxLength={field.maxLength}
                         inputMaskValue={field.inputMaskValue}
                         errors={errors[`input_${field.id}`]}
-                        sitekey={reCaptchaKey}
+                        reCaptchaKey={reCaptchaKey}
                         reCaptchaLoaded={reCaptchaLoaded}
                     />
                 )
