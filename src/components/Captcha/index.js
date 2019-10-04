@@ -32,7 +32,7 @@ const Textarea = props => {
                 key={props.name}
                 sitekey={props.reCaptchaKey}
                 render="explicit"
-                onloadCallback={reCaptchaLoaded || null}
+                onloadCallback={props.reCaptchaLoaded || null}
                 ref={props.register({
                     required: props.required && strings.errors.required,
                     maxlength: {

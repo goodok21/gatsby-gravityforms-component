@@ -81,6 +81,7 @@ const FieldBuilder = ({
                         inputMaskValue={field.inputMaskValue}
                         errors={errors[`input_${field.id}`]}
                         sitekey={reCaptchaKey}
+                        reCaptchaLoaded={reCaptchaLoaded}
                     />
                 )
             // Start with the standard fields
