@@ -12,6 +12,7 @@ import { filteredKeys } from '../../utils/helpers'
 
 import Input from '../../components/Input'
 import Textarea from '../../components/Textarea'
+import Captcha from '../../components/Captcha'
 import Select from '../../components/Select'
 import Multiselect from '../../components/Multiselect'
 import Checkbox from '../../components/Checkbox'
@@ -52,12 +53,41 @@ const FieldBuilder = ({
             // Add note for unsupported captcha field
             case 'captcha':
                 return (
-                    <Recaptcha
+                    <Captcha
                         key={field.id}
-                        sitekey={reCaptchaKey}
-                        render="explicit"
-                        onloadCallback={reCaptchaLoaded || null}
-                    />
+                        name={`input_${field.id}`}
+                        label={field.label}
+                        type={field.type}
+                        value={
+                            _.get(presetValues, `input_${field.id}`, false)
+                                ? _.get(
+                                      presetValues,
+                                      `input_${field.id}`,
+                                      false
+                                  )
+                                : ifDefaultValue(field)
+                        }
+                        description={field.description}
+                        descriptionPlacement={getPlacement(
+                            formSettings.descriptionPlacement,
+                            field.descriptionPlacement
+                        )}
+                        wrapClassName={inputWrapperClass}
+                        className={field.cssClass}
+                        register={register}
+                        required={field.isRequired}
+                        placeholder={field.placeholder}
+                        maxLength={field.maxLength}
+                        inputMaskValue={field.inputMaskValue}
+                        errors={errors[`input_${field.id}`]}
+                    >
+                        <Recaptcha
+                            key={field.id}
+                            sitekey={reCaptchaKey}
+                            render="explicit"
+                            onloadCallback={reCaptchaLoaded || null}
+                        />
+                    </Captcha>
                 )
             // Start with the standard fields
             case 'text':
