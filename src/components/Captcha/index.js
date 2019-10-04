@@ -30,7 +30,7 @@ const Textarea = props => {
             {/* {props.children} */}
             <Recaptcha
                 key={props.name}
-                sitekey={reCaptchaKey}
+                sitekey={props.reCaptchaKey}
                 render="explicit"
                 onloadCallback={reCaptchaLoaded || null}
                 ref={props.register({
