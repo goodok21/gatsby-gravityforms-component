@@ -80,14 +80,8 @@ const FieldBuilder = ({
                         maxLength={field.maxLength}
                         inputMaskValue={field.inputMaskValue}
                         errors={errors[`input_${field.id}`]}
-                    >
-                        <Recaptcha
-                            key={field.id}
-                            sitekey={reCaptchaKey}
-                            render="explicit"
-                            onloadCallback={reCaptchaLoaded || null}
-                        />
-                    </Captcha>
+                        sitekey={reCaptchaKey}
+                    />
                 )
             // Start with the standard fields
             case 'text':

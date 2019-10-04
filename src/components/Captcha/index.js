@@ -3,6 +3,7 @@ import classnames from 'classnames'
 import { outputDescription } from '../../utils/inputSettings'
 import strings from '../../utils/strings'
 
+import Recaptcha from 'react-recaptcha'
 
 const Textarea = props => {
     const regex = props.inputMaskValue
@@ -26,7 +27,26 @@ const Textarea = props => {
                 props.descriptionPlacement,
                 'above'
             )}
-            {props.children}
+            {/* {props.children} */}
+            <Recaptcha
+                key={field.id}
+                sitekey={reCaptchaKey}
+                render="explicit"
+                onloadCallback={reCaptchaLoaded || null}
+                ref={props.register({
+                    required: props.required && strings.errors.required,
+                    maxlength: {
+                        value: props.maxLength > 0 && props.maxLength,
+                        message:
+                            props.maxLength > 0 &&
+                            `${strings.errors.maxChar.front}  ${props.maxLength} ${strings.errors.maxChar.back}`,
+                    },
+                    pattern: {
+                        value: regex,
+                        message: regex && strings.errors.pattern,
+                    },
+                })}
+            />
             {/* <textarea
                 id={props.name}
                 type={props.type}
