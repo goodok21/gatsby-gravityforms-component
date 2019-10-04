@@ -29,7 +29,7 @@ const GravityFormForm = ({
     presetValues = {},
     reCaptchaKey,
     reCaptchaLoaded,
-    verifyCallback,
+    // verifyCallback,
 }) => {
     // Pull in form functions
     const { register, errors, handleSubmit, setError } = useForm()
@@ -43,6 +43,12 @@ const GravityFormForm = ({
     // Take ID argument and graphQL Gravity Form data for this form
     const singleForm = getForm(formData, id)
 
+    const [verifyKey, setVerifyKey] = useState('')
+    const handleVerifyCallback = response => {
+        console.log(response)
+        setVerifyKey(response)
+    }
+
     const onSubmitCallback = async values => {
         console.log(values)
         // Make sure we are not already waiting for a response
@@ -54,11 +60,12 @@ const GravityFormForm = ({
 
             // Check that at least one field has been filled in
             if (submissionHasOneFieldEntry(values)) {
-                const restResponse = await passToGravityForms(
-                    singleForm.apiURL,
+                const restResponse = await passToGravityForms({
+                    baseUrl: singleForm.apiURL,
                     values,
-                    lambda
-                )
+                    lambda,
+                    verifyKey
+                })
 
                 setLoadingState(false)
 
@@ -115,7 +122,7 @@ const GravityFormForm = ({
                         presetValues={presetValues}
                         reCaptchaKey={reCaptchaKey}
                         reCaptchaLoaded={reCaptchaLoaded}
-                        verifyCallback={verifyCallback}
+                        verifyCallback={handleVerifyCallback}
                         register={register}
                         errors={errors}
                     />

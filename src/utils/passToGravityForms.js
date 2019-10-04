@@ -1,9 +1,15 @@
 import axios from 'axios'
 
-export default async (baseUrl, formData, lambdaEndpoint) => {
+export default async ({
+    baseUrl,
+    values: formData,
+    lambda: lambdaEndpoint,
+    verifyKey,
+}) => {
     let lambaData = {
         baseUrl: baseUrl,
         payload: formData,
+        verifyKey,
     }
 
     let result
