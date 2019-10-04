@@ -33,19 +33,20 @@ const Textarea = props => {
                 sitekey={props.reCaptchaKey}
                 render="explicit"
                 onloadCallback={props.reCaptchaLoaded || null}
-                ref={props.register({
-                    required: props.required && strings.errors.required,
-                    maxlength: {
-                        value: props.maxLength > 0 && props.maxLength,
-                        message:
-                            props.maxLength > 0 &&
-                            `${strings.errors.maxChar.front}  ${props.maxLength} ${strings.errors.maxChar.back}`,
-                    },
-                    pattern: {
-                        value: regex,
-                        message: regex && strings.errors.pattern,
-                    },
-                })}
+                verifyCallback={props.verifyCallback}
+                // ref={props.register({
+                //     required: props.required && strings.errors.required,
+                //     maxlength: {
+                //         value: props.maxLength > 0 && props.maxLength,
+                //         message:
+                //             props.maxLength > 0 &&
+                //             `${strings.errors.maxChar.front}  ${props.maxLength} ${strings.errors.maxChar.back}`,
+                //     },
+                //     pattern: {
+                //         value: regex,
+                //         message: regex && strings.errors.pattern,
+                //     },
+                // })}
             />
             {/* <textarea
                 id={props.name}

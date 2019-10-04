@@ -29,6 +29,7 @@ const GravityFormForm = ({
     presetValues = {},
     reCaptchaKey,
     reCaptchaLoaded,
+    verifyCallback,
 }) => {
     // Pull in form functions
     const { register, errors, handleSubmit, setError } = useForm()
@@ -114,6 +115,7 @@ const GravityFormForm = ({
                         presetValues={presetValues}
                         reCaptchaKey={reCaptchaKey}
                         reCaptchaLoaded={reCaptchaLoaded}
+                        verifyCallback={verifyCallback}
                         register={register}
                         errors={errors}
                     />

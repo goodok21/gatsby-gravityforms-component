@@ -27,6 +27,7 @@ const FieldBuilder = ({
     presetValues = {},
     reCaptchaKey = '',
     reCaptchaLoaded,
+    verifyCallback,
     register,
     errors,
 }) => {
@@ -82,6 +83,7 @@ const FieldBuilder = ({
                         errors={errors[`input_${field.id}`]}
                         reCaptchaKey={reCaptchaKey}
                         reCaptchaLoaded={reCaptchaLoaded}
+                        verifyCallback={verifyCallback}
                     />
                 )
             // Start with the standard fields
